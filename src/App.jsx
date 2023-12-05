@@ -4,7 +4,7 @@ import { useState } from "react";
 import useLocalStorage from './hooks/useLocalStorage'
 // Custom Components
 import { CustomForm } from "./components/CustomForm";
-import toast, { Toaster } from "react-hot-toast";
+import  { Toaster } from "react-hot-toast";
 import { TaskList } from "./components/taskList";
 import { EditForm } from "./components/EditForm";
 function App() {
