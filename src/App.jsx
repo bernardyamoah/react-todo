@@ -8,6 +8,7 @@ import { Toaster } from "react-hot-toast";
 import { TaskList } from "./components/TaskList";
 import { EditForm } from "./components/EditForm";
 import toast from "react-hot-toast";
+import { Trash2Icon } from "lucide-react";
 function App() {
 	const [tasks, setTasks] = useLocalStorage("react-todo.taskList", []);
 	const [previousFocusEl, setPreviousFocusEl] = useState(null);
@@ -20,14 +21,16 @@ function App() {
 
 	const deleteTask = (id) => {
 		setTasks((prevState) => prevState.filter((t) => t.id !== id));
-		toast.success("Task deleted successfully");
+		toast.success("Task deleted successfully", {
+			icon: <Trash2Icon/>,
+		});
 	};
 
 	const toggleTask = (id) => {
 		setTasks((prevState) =>
 			prevState.map((t) => (t.id === id ? { ...t, checked: !t.checked } : t))
 		);
-		toast.success("Task completed successfully");
+		
 	};
 	const closeEditMode = () => {
 		setIsEditing(!isEditing);

@@ -11,6 +11,7 @@ function formatTime() {
 
 import React from "react";
 import toast from "react-hot-toast";
+import { CheckIcon } from "lucide-react";
 
 export const CustomForm = ({ addTask }) => {
 	const [task, setTask] = useState("");
@@ -22,7 +23,9 @@ export const CustomForm = ({ addTask }) => {
 			checked: false,
 			id: formatTime(),
 		});
-		toast.success("Task added");
+		toast.success("Task added",{
+			icon: <CheckIcon />,
+		});
 		setTask("");
 	};
 

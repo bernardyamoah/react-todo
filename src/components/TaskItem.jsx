@@ -4,12 +4,22 @@ import styles from "./TaskItem.module.css";
 import { useState } from "react";
 import { TrashIcon } from "lucide-react";
 import { PencilIcon } from "lucide-react";
+import toast from "react-hot-toast";
+import { CandyCaneIcon } from "lucide-react";
 // import Library
-export const TaskItem = ({ task, deleteTask,toggleTask,enterEditMode }) => {
+export const TaskItem = ({ task, deleteTask, toggleTask, enterEditMode }) => {
 	const [isChecked, setIsChecked] = useState(task.checked);
 
 	const handleCheckbox = (e) => {
 		setIsChecked(!isChecked);
+		console.log(task.checked)
+		if (!task.checked===true) {
+			toast.success(`${task.name} completed successfully`);
+		} else {
+			toast.error(`${task.name} not completed`, {
+				icon: <CandyCaneIcon />,
+			});
+		}
 		toggleTask(task.id);
 	};
 	return (
@@ -36,7 +46,7 @@ export const TaskItem = ({ task, deleteTask,toggleTask,enterEditMode }) => {
 					<button
 						className="btn"
 						aria-label={`Update ${task.name} name`}
-						onClick={()=>enterEditMode(task)}
+						onClick={() => enterEditMode(task)}
 					>
 						<PencilIcon width={8} height={8} />
 					</button>

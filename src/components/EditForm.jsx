@@ -17,13 +17,13 @@ export const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
 		return () => {
 			window.removeEventListener("keydown", closeMoodalifEscaped);
 		};
-	}, [closeEditMode ]);
+	}, [closeEditMode]);
 
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
 
 		updateTask({ ...editedTask, name: updatedTaskName });
-		toast.success("Task updated successfully✅");
+		toast.success("Task updated successfully");
 		setUpdatedTaskName("");
 	};
 
@@ -31,7 +31,9 @@ export const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
 		<div
 			role="dialog"
 			aria-labelledby="editedTask"
-			onClick={(e)=> {e.target===e.currentTarget && closeEditMode()}}
+			onClick={(e) => {
+				e.target === e.currentTarget && closeEditMode();
+			}}
 		>
 			<form className="todo" onSubmit={handleFormSubmit}>
 				<div className="wrapper">
